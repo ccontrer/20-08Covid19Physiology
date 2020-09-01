@@ -130,3 +130,6 @@ dmypy.json
 
 # VSCode
 *.code-workspace
+
+# Notebooks
+.ipynb_checkpoints/
