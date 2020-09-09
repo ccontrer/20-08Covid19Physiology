@@ -19,7 +19,6 @@ class VirusLoadFunction:
         assert minv < maxv,"parameter must satisfy minv < maxv"
 
     def VirusLoad(self, t, a1, a2, b1, b2, alpha, minv, maxv):
-        # self.__AssertParameters(a1, a2, b1, b2, alpha, minv, maxv)
         def v1(t, a1, a2, maxv):
             return 1. + (maxv - 1.)*(np.tanh(6.*(t - (a1 + a2)/2)/(a2 - a1)) - np.tanh(-3.*(a2 + a1)/(a2 - a1)))/2.
 
@@ -29,7 +28,7 @@ class VirusLoadFunction:
         def v3(t, b1, b2, minv):
             return 1. - (1. - minv)*(np.tanh(6.*(t - (b1 + b2)/2)/(b2 - b1)) - np.tanh(-3.*(b2 + b1)/(b2 - b1)))/2.
 
-        return np.log10(v1(t, a1, a2, maxv)*v2(t, a2, alpha)*v3(t, b1, b2, minv))
+        return np.log10(v1(t, a1, a2, maxv)*v2(t, a2, alpha)*v3(t, b1, b2, minv))        
 
     def InitialGuess(self, a1, a2, b1, b2, alpha, minv, maxv):
         self.__AssertParameters(a1, a2, b1, b2, alpha, minv, maxv)
@@ -37,13 +36,16 @@ class VirusLoadFunction:
 
     def Fit(self, **kwargs):
         maxt = np.max(self.tdata)
-        minv, maxv = 1e1, 1e8
+        maxv = np.power(np.max(self.vdata), 10)*1e1
+        # compute a maximum value for alpha based on data
+        maxalpha = 10.0
         minb = 0.
-        maxb = [maxt, maxt, maxt, maxt, 10.0, minv, maxv]
-        print(maxb)
-        print(self.p0)
-        self.par, self.pcov = curve_fit(self.VirusLoad, self.tdata, self.vdata,
-                                        p0=self.p0, bounds=(minb, maxb), **kwargs)
+        maxb = [maxt, maxt, maxt, maxt, maxalpha, maxv, maxv]
+        par, pcov = curve_fit(self.VirusLoad, self.tdata, self.vdata,
+                              p0=self.p0, bounds=(minb, maxb), **kwargs)
+        self.__AssertParameters(*par)
+        self.par, self.pcov = par, pcov
+        self.RSS = sum(np.power(np.ones(4), 2))
 
     def Plot(self, **kwargs):
         plt.plot(self.tdata, self.vdata, 'ro', label='data', **kwargs)
@@ -51,8 +53,6 @@ class VirusLoadFunction:
             tdata = np.linspace(np.min(self.tdata), np.max(self.tdata), num=100)
             plt.plot(tdata, self.VirusLoad(tdata, *self.par), 'b-',
                      label='fit: $a_1$=%2.1f, $a_2$=%2.1f\n $b_1$=%2.1f, $b_2$=%2.1f\n $\\alpha$=%2.1f, min=%1.0e\n max=%1.0e' % tuple(self.par))
-        plt.xlabel('t')
+        plt.xlabel('time')
         plt.ylabel('V(t)')
         plt.legend()
-        plt.show()
-        
