@@ -12,7 +12,8 @@ Supervisors: Thomas Hillen and Jay Newby
 
 ### Notebooks
 
-- [Data fitting Python notebook](./python/Fitting.ipynb)
+- [Introduction: Data fitting Python](./python/Introduction-%20fitting%20virus%20load%20function.ipynb)
+- [Application: Influenza data](./python/Application-%20Influenza%20Data.ipynb)
 
 ---
 
