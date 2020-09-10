@@ -1,7 +1,10 @@
 # Acronyms and abbreviations
 
+- ACE2: angiotensin-converting enzyme 2. Converts angiotensin II into angiotensin (1-7). https://en.wikipedia.org/wiki/Angiotensin-converting_enzyme_2
+- DBP: Diastolic blood presure. https://en.wikipedia.org/wiki/Blood_pressure
 - IAV: influenza A virus. 
 - HCV: hepatitis C virus. https://en.wikipedia.org/wiki/Hepatitis_C
 - HIV: human immunodefincientcy virus. https://en.wikipedia.org/wiki/HIV
 - INF: interferons. Signaling proteins of the cytokines class known for "intefering" with viral replication and other functions. https://en.wikipedia.org/wiki/Interferon
+- RAS: Renin-angiotensin system. "Hormone system that regulates blood pressure and fluid and electrolyte balance, as well as systemic vascular resistance". https://en.wikipedia.org/wiki/Renin%E2%80%93angiotensin_system 
 - VEGF: Vascular endothelial growth factor. https://en.wikipedia.org/wiki/Vascular_endothelial_growth_factor
