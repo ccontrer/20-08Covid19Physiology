@@ -5,13 +5,22 @@ from matplotlib import pyplot as plt
 from scipy.optimize import curve_fit
 
 class VirusLoadFunction:
+    # This class provides and easy way to load, fit, and display virus load data.
+    # Usage:
+    # >>> vl = VirusLoadFunction(tdate, vdata)
+    # >>> vl.InitialGuess(*par0)
+    # >>> vl.Plot()
+    # >>> vl.Fit()
+    # >>> vl.Plot() # after fitting
+    # >>> vl.Predict(new_tdata) # evaluates using best estimate
 
-    def __init__(self, tdata, vdata):
+    def __init__(self, tdata, vdata, scale='log10'):
         self.tdata = tdata
         self.vdata = vdata
         self.par = np.array([])
         self.par0 = np.array([])
         self.par_se = np.array([])
+        self.scale = scale
 
     def __AssertParameters(self, a1, a2, b1, b2, alpha, minv, maxv):
         assert all(np.array([a1, a2, b1, b2, alpha, minv, maxv]) > 0.),"parameters must be positive"
@@ -28,7 +37,10 @@ class VirusLoadFunction:
         def v3(t, b1, b2, minv):
             return 1. - (1. - minv)*(np.tanh(6.*(t - (b1 + b2)/2)/(b2 - b1)) - np.tanh(-3.*(b2 + b1)/(b2 - b1)))/2.
 
-        return np.log10(v1(t, a1, a2, maxv)*v2(t, a2, alpha)*v3(t, b1, b2, minv))        
+        out = v1(t, a1, a2, maxv)*v2(t, a2, alpha)*v3(t, b1, b2, minv)
+        if self.scale == 'log10':
+            out = np.log10(out)
+        return out
 
     def Eval(self, tdata, par):
         return self.__VirusLoad(tdata, *par)
@@ -49,7 +61,7 @@ class VirusLoadFunction:
                               method='trf', **kwargs)
         self.__AssertParameters(*par)
         self.par, self.par_se = par, np.sqrt(np.diag(pcov))
-        self.RSS = sum(np.power(np.ones(4), 2))
+        self.RSS = sum(np.power(self.Predict(self.tdata) - self.vdata, 2))
 
     def Predict(self, ttdata):
         return self.Eval(ttdata, self.par)
