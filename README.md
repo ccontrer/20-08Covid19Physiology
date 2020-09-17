@@ -1,6 +1,6 @@
 # Covid 19 Physiology
 
-Supervisors: Thomas Hillen and Jay Newby
+Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay Newby](https://newby-jay.github.io/)
 
 ---
 
@@ -12,8 +12,9 @@ Supervisors: Thomas Hillen and Jay Newby
 
 ### Notebooks
 
-- [Introduction: Data fitting Python](./python/Introduction-%20fitting%20virus%20load%20function.ipynb)
-- [Application: Influenza data](./python/Application-%20Influenza%20Data.ipynb)
+- [Virus load function: introduction to data fitting with Python](./python/01%20Introduction%20to%20fitting%20the%20virus%20load%20function.ipynb)
+- [Virus load function: fitting to influenza data](./python/02%20Fitting%20to%20influenza%20data.ipynb)
+- [Solving the virus target model with Julia](./julia/01%20Solving%20the%20virus%20target%20model.ipynb)
 
 ---
 
