@@ -13,9 +13,10 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 ### Notebooks
 
 - [Virus load function: introduction to data fitting with Python](./python/01%20Introduction%20to%20fitting%20the%20virus%20load%20function.ipynb)
-- [Virus load function: fitting to influenza data](./python/02%20Fitting%20to%20influenza%20data.ipynb)
-- [Solving the virus target model with Julia](./julia/01%20Solving%20the%20virus%20target%20model.ipynb)
-- [Fitting the virus target model with Julia](./julia/02%20Fitting%20the%20virus%20target%20model.ipynb)
+- [Virus load function: fitting to influenza data with Python](./python/02%20Fitting%20to%20influenza%20data.ipynb)
+- [Virus load function: fitting to influenza data with Julia](./julia/02%20Fitting%20the%20virus%20load%20function.ipynb)
+- [Solving the viral kinetic ODE model with Julia](./julia/01%20Solving%20the%20virus%20target%20model.ipynb)
+- [Fitting the virus kinetic ODE model with Julia (under construction)](./julia/02%20Fitting%20the%20virus%20target%20model.ipynb)
 
 ---
 
@@ -23,7 +24,7 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 
 [List of acronyms and abbreviations](./references/acronyms.md)
 
-### Notebooks
+### Notebooks (non yet)
 
 
 
