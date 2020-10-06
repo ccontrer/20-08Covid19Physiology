@@ -16,7 +16,8 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 - [Virus load function: fitting to influenza data with Python](./python/02%20Fitting%20to%20influenza%20data.ipynb)
 - [Virus load function: fitting to influenza data with Julia](./julia/02%20Fitting%20the%20virus%20load%20function.ipynb)
 - [Solving the viral kinetic ODE model with Julia](./julia/01%20Solving%20the%20virus%20target%20model.ipynb)
-- [Fitting the virus kinetic ODE model with Julia (under construction)](./julia/02%20Fitting%20the%20virus%20target%20model.ipynb)
+- [Fitting the virus kinetic ODE model with Julia](./julia/02%20Fitting%20the%20virus%20target%20model.ipynb)
+- [Comparing the viral load function with the ODE model](./julia/04%20Comparing%20the%20virus%20load%20function%20with%20the%20viral%20target%20model.ipynb)
 
 ---
 
