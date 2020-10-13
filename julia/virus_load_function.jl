@@ -23,7 +23,6 @@ function LogVirusLoadFunction(t, p, data::VirusLoadData)
     θ = minimum(data.v)
     logVmin = -6.0
     a₁, a₂, b₁, b₂, α, logVmax = p
-    # assert_params(a₁, a₂, b₁, b₂, α, logVmax)
     logV = log10.(v₁.(t, a₁, a₂, logVmax).*v₂.(t, a₂, α).*v₃.(t, b₁, b₂, logVmin))
     max.(logV, θ)
 end
