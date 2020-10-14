@@ -26,7 +26,7 @@ module VirusLoadCurve
         x := data.t
         y := data.v
         seriestype := :scatter
-        xaxis --> ("Time (days)", (tmin, tmax))
+        xaxis --> ("Time (days)", (0.0, tmax))
         yaxis --> (L"\log\,V(t)", (vmin-0.5, vmax+0.5))
         legend -> :none
         grid --> :none

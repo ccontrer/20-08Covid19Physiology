@@ -22,8 +22,8 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 - [Comparing the viral load function with the ODE model](./julia/04%20Comparing%20the%20virus%20load%20function%20with%20the%20virus-target%20model.ipynb)
 - Fitting models to data:
   - [Influenza data](./julia/05%20Fitting%20models%20to%20influenza%20data.ipynb)
-  - [Macaque monkey SARS-Cov2 data](./julia/06%20Fitting%20models%20to%20SARS-Cov2%20macaque%20monkey%20data.ipynb)
-  - [Human SARS-Cov2 data]()
+  - [Macaque monkey SARS-Cov2 data](./julia/06%20Fitting%20models%20to%20macaque%20monkey%20SARS-Cov2%20data.ipynb
+  - [Human SARS-Cov2 data](./julia/07%20Fitting%20models%20to%20human%20SARS-Cov2%20data.ipynb)
 
 ---
 

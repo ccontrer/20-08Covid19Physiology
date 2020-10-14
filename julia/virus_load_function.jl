@@ -32,7 +32,7 @@ function get_bounds(data, p0)
     a₁a₂ = (a₁ + a₂)/2
     a₂b₁ = (a₂ + b₁)/2
     b₁b₂ = (b₁ + b₂)/2
-    tmin = minimum(data.t)
+    tmin = 0.0
     tmax = maximum(data.t)
     vmax = maximum(data.v)
     lb   = [tmin, a₁a₂, a₂b₁, b₁b₂, 1e-8, vmax-3.0]
@@ -45,12 +45,12 @@ function fitVLF(data::VirusLoadData, p0::Vector)
     model(t, p) = LogVirusLoadFunction(t, p, data)
     lb, ub = get_bounds(data, p0)
     fit = curve_fit(model, data.t, data.v, p0, lower=lb, upper=ub)
-    names = ["a₁", "a₂", "b₁", "b₂", "α", "logVmin", "logVmax"]
+    names = ["a₁", "a₂", "b₁", "b₂", "α", "logVmax"]
     VLFResult(fit, data, names, p0)
 end
 
 @recipe function f(result::VLFResult)
-    tmin, tmax = extrema(result.data.t)
+    tmin, tmax = 0.0, maximum(result.data.t)
     vmin, vmax = extrema(result.data.v)
     tt = Vector(range(tmin, tmax, step=1e-2))
     x := tt

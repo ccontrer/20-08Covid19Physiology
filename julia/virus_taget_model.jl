@@ -17,7 +17,7 @@ u0default = [1e+7, 75.0, 0.0, 1e-12]
 
 function LogViralTargetModel(t, p, data, u0)
     θ = minimum(data.v)
-    tspan = extrema(data.t)
+    tspan = (0.0, maximimum(data.t))
     pars = (β = p[1],
             k = p[2],
             δ = p[3],
@@ -39,7 +39,7 @@ function fitVTM(data::VirusLoadData, p0::Vector; u0=u0default)
 end
 
 @recipe function f(result::VTMResult)
-    tmin, tmax = extrema(result.data.t)
+    tmin, tmax = 0.0, maximum(result.data.t)
     vmin, vmax = extrema(result.data.v)
     tt = Vector(range(tmin, tmax, step=1e-2))
     x := tt
