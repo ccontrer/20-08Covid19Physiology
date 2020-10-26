@@ -4,7 +4,7 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 
 ---
 
-## Virus Load Function Research
+## Virus Load Function research
 
 [List of papers](./references/virus_load.md)
 
@@ -34,9 +34,11 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 ### Notebooks (non yet)
 
 
+--- 
 
 ### Resources:
 
+- [Covid-19 Physiology Group](https://sites.google.com/ualberta.ca/cov-pg/home) 
 - [Long-term effects of Covid-19](https://www.mayoclinic.org/diseases-conditions/coronavirus/in-depth/coronavirus-long-term-effects/art-20490351?utm_source=newsletter&utm_medium=email&utm_campaign=housecall&s=03)
 - [Bradykinin hypothesis article (T. Smith)](https://elemental.medium.com/a-supercomputer-analyzed-covid-19-and-an-interesting-new-theory-has-emerged-31cb8eba9d63)
 - [Bradykinin hypothesis article (A. Dasgupta)](https://www.the-scientist.com/news-opinion/is-a-bradykinin-storm-brewing-in-covid-19--67876)
