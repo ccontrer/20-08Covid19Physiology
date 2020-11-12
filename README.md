@@ -42,3 +42,4 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 - [Treatment guidelines](https://www.idsociety.org/practice-guideline/covid-19-guideline-treatment-and-management/)
 - [Covid-19 dashboard (John Hopkins)](https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6)
 - [Covid-19 dashboard (@AviSchiffmann)](https://ncov2019.live/)
+- [Covid-19 WHO daashboard](https://covid19.who.int/table)
