@@ -44,7 +44,8 @@ end
     tt = Vector(range(tmin, tmax, step=1e-2))
     x := tt
     y := LogViralTargetModel(tt, result.fit.param, result.data, result.u0)
-    linewidth := 3
+    linewidth := 4
+    linestyle := :dash
     xaxis --> ("Time (days)", (tmin, tmax))
     yaxis --> (L"\log\,V(t)", (vmin-1, vmax+1))
     grid --> :none
