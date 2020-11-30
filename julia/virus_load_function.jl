@@ -20,10 +20,14 @@ function assert_params(a₁, a₂, b₁, b₂, α, logVmax)
 end
 
 function LogVirusLoadFunction(t, p, data::VirusLoadData)
-    θ = minimum(data.v)
-    logVmin = -6.0
+    logVmin = -7.0
     a₁, a₂, b₁, b₂, α, logVmax = p
-    logV = log10.(v₁.(t, a₁, a₂, logVmax).*v₂.(t, a₂, α).*v₃.(t, b₁, b₂, logVmin))
+    log10.(v₁.(t, a₁, a₂, logVmax).*v₂.(t, a₂, α).*v₃.(t, b₁, b₂, logVmin))
+end
+
+function LogEmpiricalVirusLoadFunction(t, p, data::VirusLoadData)
+    θ = minimum(data.v)
+    logV = LogVirusLoadFunction(t, p, data::VirusLoadData)
     max.(logV, θ)
 end
 
@@ -42,24 +46,28 @@ end
     
 
 function fitVLF(data::VirusLoadData, p0::Vector)
-    model(t, p) = LogVirusLoadFunction(t, p, data)
+    model(t, p) = LogEmpiricalVirusLoadFunction(t, p, data)
     lb, ub = get_bounds(data, p0)
     fit = curve_fit(model, data.t, data.v, p0, lower=lb, upper=ub)
     names = ["a₁", "a₂", "b₁", "b₂", "α", "logVmax"]
     VLFResult(fit, data, names, p0)
 end
 
-@recipe function f(result::VLFResult)
+@recipe function f(result::VLFResult; empirical=false)
     tmin, tmax = 0.0, maximum(result.data.t)
     vmin, vmax = extrema(result.data.v)
     tt = Vector(range(tmin, tmax, step=1e-2))
     x := tt
-    y := LogVirusLoadFunction(tt, result.fit.param, result.data)
-    linewidth := 4
+    if empirical
+        y := LogEmpiricalVirusLoadFunction(tt, result.fit.param, result.data)
+    else
+        y := LogVirusLoadFunction(tt, result.fit.param, result.data)
+    end
+    linewidth --> 4
     xaxis --> ("Time (days)", (tmin, tmax))
     yaxis --> (L"\log\,V(t)", (vmin-1, vmax+1))
     grid --> :none
-    label := "Virus load function"
+    label --> "Virus load function"
     ()
 end
 

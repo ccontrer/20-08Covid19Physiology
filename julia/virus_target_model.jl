@@ -14,42 +14,52 @@ ViralTargetODE = @ode_def begin
 end β k δ K p c
 
 u0default = [1e+7, 75.0, 0.0, 1e-12]
+lbdefault = [0.0, 0.0, 0.0, 0.0, 0.0]
+ubdefault = [Inf, Inf, Inf, Inf, Inf]
 
 function LogViralTargetModel(t, p, data, u0)
-    θ = minimum(data.v)
     tspan = (0.0, maximum(data.t))
     pars = (β = p[1],
-            k = p[2],
-            δ = p[3],
-            K = p[4],
-            p = p[5],
-            c = p[6])
+            k = 4.0,
+            δ = p[2],
+            K = p[3],
+            p = p[4],
+            c = p[5])
     prob = ODEProblem(ViralTargetODE, u0, tspan, pars)
     sol = solve(prob, Tsit5(), dtmax=1e-2)
-    max.(log10.(sol(t)[end, :]), θ)
+    log10.(sol(t)[end, :])
 end
 
-function fitVTM(data::VirusLoadData, p0::Vector; u0=u0default)
-    model(t, p) = LogViralTargetModel(t, p, data, u0)
-    lb = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-    ub = [Inf, Inf, Inf, Inf, Inf, Inf]
+function LogEmpiricalViralTargetModel(t, p, data, u0)
+    θ = minimum(data.v)
+    LogV = LogViralTargetModel(t, p, data, u0)
+    max.(LogV, θ)
+end
+
+function fitVTM(data::VirusLoadData, p0::Vector; lb=lbdefault, ub=ubdefault, u0=u0default)
+    model(t, p) = LogEmpiricalViralTargetModel(t, p, data, u0)
     fit = curve_fit(model, data.t, data.v, p0, lower=lb, upper=ub)
-    names = ["β", "k", "δ", "K", "p", "c"]
+    names = ["β", "δ", "K", "p", "c"]
     VTMResult(fit, data, names, p0, u0)
 end
 
-@recipe function f(result::VTMResult)
+@recipe function f(result::VTMResult; empirical=false, p0=false)
     tmin, tmax = 0.0, maximum(result.data.t)
     vmin, vmax = extrema(result.data.v)
+    param = p0 ? result.fit.param : result.p0
     tt = Vector(range(tmin, tmax, step=1e-2))
     x := tt
-    y := LogViralTargetModel(tt, result.fit.param, result.data, result.u0)
-    linewidth := 4
-    linestyle := :dash
+    if empirical
+        y := LogEmpiricalViralTargetModel(tt, param, result.data, result.u0)
+    else
+        y := LogViralTargetModel(tt, param, result.data, result.u0)
+    end
+    linewidth --> 4
+    linestyle --> :dash
     xaxis --> ("Time (days)", (tmin, tmax))
     yaxis --> (L"\log\,V(t)", (vmin-1, vmax+1))
     grid --> :none
-    label := "Viral target model"
+    label --> "Viral target model"
     ()
 end
 
@@ -66,7 +76,6 @@ function Base.summary(result::VTMResult)
         p0 = result.p0[i]
         if CI == false
             println(@sprintf "  %s = %.3e (initial=%.3e)" name val p0)
-        
         else
             CIl = CI[i][1]
             CIr = CI[i][2]

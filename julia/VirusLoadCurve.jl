@@ -20,17 +20,17 @@ module VirusLoadCurve
         v::Vector{T}
     end
 
-    @recipe function f(data::VirusLoadCurve.VirusLoadData)
+    @recipe function f(data::VirusLoadData)
         tmin, tmax = extrema(data.t)
         vmin, vmax = extrema(data.v)
         x := data.t
         y := data.v
         seriestype := :scatter
-        size := (500, 500)
-        xaxis --> ("Time (days)", (0.0, tmax))
-        yaxis --> (L"\log\,V(t)", (vmin-0.5, vmax+0.5))
-        label := "Data"
-        legend -> :none
+        size --> (400, 400)
+        xaxis --> ("Time (days)", (0.0, tmax), font(14))
+        yaxis --> (L"\log\,V(t)", (vmin-0.5, vmax+0.5), font(14))
+        label --> "Data"
+        legend --> :none
         grid --> :none
         ()
     end
