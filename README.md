@@ -4,9 +4,9 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 
 ---
 
-[List of acronyms and abbreviations](./references/acronyms.md)
-
 ## Virus Load Function research
+
+[List of acronyms and abbreviations](./references/acronyms.md)
 
 [List of papers](./references/virus_load.md)
 
@@ -30,6 +30,10 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 ## Physiology of Covid-19 research
 
 [List of acronyms and abbreviations](./references/acronyms.md)
+
+[Historic summary](./references/covid-19_history.md)
+
+[List of papers](./references/covid-19_papers.md)
 
 ### Notebooks (non yet)
 
