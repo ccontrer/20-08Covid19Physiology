@@ -35,8 +35,9 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 
 [List of papers](./references/covid-19_papers.md)
 
-### Notebooks (non yet)
+### Notebooks
 
+- [Model for the covid-19 in body organs](/julia/08%20SARS-Cov2%20Physiology%20model.ipynb)
 
 --- 
 
