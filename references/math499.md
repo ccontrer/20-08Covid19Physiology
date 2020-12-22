@@ -16,8 +16,6 @@ This project involves the [PhysiCell simulator](https://nanohub.org/tools/pc4cov
 
 The goal of this project is to use machine learning to classify patients at risk. This is done by assigning a ranking or risk measument to patients based on thier age, sex, medical history, co-morbidities and other clinical features. The main idea is to reproduce the ideas and results in these two articles: [1] [2], possibly for the case of Canada and using different clasification methods. A preliminary task is obtain and mine data, posibly from [Kaggle](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge), [Statistics Canada](https://www150.statcan.gc.ca/n1/en/type/data?MM=1), or [GenOMICC](https://genomicc.org/).
 
-https://www.kaggle.com/mlconsult/summary-page-covid-19-risk-factors
-
 **Required skills and knowledge**: programming (python, julia, R), statistics, machine learning.
 
 [1] Knight, S. R., Ho, A., Pius, R., Buchan, I., Carson, G., Drake, T. M., Dunning, J., Fairfield, C. J., Gamble, C., Green, C. A., Gupta, R., Halpin, S., Hardwick, H. E., Holden, K. A., Horby, P. W., Jackson, C., McLean, K. A., Merson, L., Nguyen-Van-Tam, J. S., … Harrison, E. M. (2020). Risk stratification of patients admitted to hospital with covid-19 using the ISARIC WHO Clinical Characterisation Protocol: Development and validation of the 4C Mortality Score. The BMJ, 370(September), 1–13. https://doi.org/10.1136/bmj.m3339
