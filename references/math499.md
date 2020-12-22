@@ -14,7 +14,7 @@ This project involves the [PhysiCell simulator](https://nanohub.org/tools/pc4cov
 
 ## Classification and ranking COVID-19 patients using machine learning
 
-The goal of this project is to use machine learning to classify patients at risk. This is done by assigning a ranking or risk measument to patients based on thier age, sex, medical history, co-morbidities and other clinical features. The main idea is to reproduce the ideas and results in these two articles: [1] [2], possibly for the case of Canada and using different clasification methods. A preliminary task is obtaina and mine data, posibly from [Kaggle](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge), [Statistics Canada](https://www150.statcan.gc.ca/n1/en/type/data?MM=1), or [GenOMICC](https://genomicc.org/).
+The goal of this project is to use machine learning to classify patients at risk. This is done by assigning a ranking or risk measument to patients based on thier age, sex, medical history, co-morbidities and other clinical features. The main idea is to reproduce the ideas and results in these two articles: [1] [2], possibly for the case of Canada and using different clasification methods. A preliminary task is obtain and mine data, posibly from [Kaggle](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge), [Statistics Canada](https://www150.statcan.gc.ca/n1/en/type/data?MM=1), or [GenOMICC](https://genomicc.org/).
 
 https://www.kaggle.com/mlconsult/summary-page-covid-19-risk-factors
 
