@@ -45,6 +45,8 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 
 - [Covid-19 Physiology Group](https://sites.google.com/ualberta.ca/cov-pg/home) 
 - [Treatment guidelines](https://www.idsociety.org/practice-guideline/covid-19-guideline-treatment-and-management/)
-- [Covid-19 dashboard (John Hopkins)](https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6)
+- [Covid-19 dashboard (John HopkinsUniversity)](https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6)
+- [Covid-19 Tracker Canada](https://covid19tracker.ca/)
 - [Covid-19 dashboard (@AviSchiffmann)](https://ncov2019.live/)
 - [Covid-19 WHO daashboard](https://covid19.who.int/table)
+- [Data sets](references/datasets.md)
