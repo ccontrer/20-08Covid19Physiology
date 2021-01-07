@@ -37,7 +37,7 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 
 ### Notebooks
 
-- [Model for the covid-19 in body organs](./julia/08%20SARS-Cov2%20Physiology%20model.ipynb) [html](http://htmlpreview.github.io/?https://github.com/ccontrer/20-08Covid19Physiology/blob/master/julia/08%20SARS-Cov2%20Physiology%20model.html)
+- [Model for the covid-19 in body organs](./julia/08%20SARS-Cov2%20Physiology%20model.ipynb) [(html preview)](https://htmlpreview.github.io/?https://github.com/ccontrer/20-08Covid19Physiology/blob/master/julia/08%20SARS-Cov2%20Physiology%20model.html)
 
 --- 
 
