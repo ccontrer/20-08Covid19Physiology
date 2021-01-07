@@ -23,7 +23,7 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 - Fitting models to data:
   - [Influenza data](./julia/05%20Fitting%20models%20to%20influenza%20data.ipynb)
   - [Macaque monkey SARS-Cov2 data](./julia/06%20Fitting%20models%20to%20macaque%20monkey%20SARS-Cov2%20data.ipynb)
-  - [Human SARS-Cov2 data](./julia/07%20Fitting%20models%20to%20human%20SARS-Cov2%20data.ipynb)
+  - [Human SARS-Cov2 data](./julia/08%20SARS-Cov2%20Physiology%20model.html)
 
 ---
 
@@ -45,8 +45,14 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 
 - [Covid-19 Physiology Group](https://sites.google.com/ualberta.ca/cov-pg/home) 
 - [Treatment guidelines](https://www.idsociety.org/practice-guideline/covid-19-guideline-treatment-and-management/)
-- [Covid-19 dashboard (John HopkinsUniversity)](https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6)
-- [Covid-19 Tracker Canada](https://covid19tracker.ca/)
-- [Covid-19 dashboard (@AviSchiffmann)](https://ncov2019.live/)
-- [Covid-19 WHO daashboard](https://covid19.who.int/table)
 - [Data sets](references/datasets.md)
+- [WHO Quick links](https://www.who.int/emergencies/diseases/novel-coronavirus-2019)
+
+### Visualization tools
+
+- [John Hopkins University dashboard](https://gisanddata.maps.arcgis.com/apps/opsdashboard/index.html#/bda7594740fd40299423467b48e9ecf6)
+- [WHO dashboard](https://covid19.who.int/table)
+- [nCoV2019.live (@AviSchiffmann)](https://ncov2019.live/)
+- [Tracker Canada](https://covid19tracker.ca/)
+- [Covid Trends (aatsihb)](https://aatishb.com/covidtrends/)
+- [Next strain](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501,69&p=grid&r=country)

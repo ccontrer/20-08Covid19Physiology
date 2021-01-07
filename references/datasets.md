@@ -7,6 +7,7 @@
 - https://console.cloud.google.com/marketplace/browse?q=covid-19%20open%20data&filter=category:covid19 : Covid-19 datsets on GCP.
 - https://github.com/owid/covid-19-data/tree/master/public/data : [Our World in Data repo](https://ourworldindata.org/coronavirus). Contains number of cases and plenty of useful references.
 - https://www150.statcan.gc.ca/n1/pub/13-26-0003/132600032020001-eng.htm : Statistics Canada Dataset. Contains date, region, gender, age group, symptoms, status and transmission accross Canada. The [form](https://www.canada.ca/content/dam/phac-aspc/documents/services/diseases/2019-novel-coronavirus-infection/health-professionals/2019-nCoV-case-report-form-en.pdf) has a section for prexisting conditions, laboratory results and vaccination. Is this information accessible?
+- https://data.cdc.gov/Case-Surveillance/COVID-19-Case-Surveillance-Restricted-Access-Detai/mbd7-r32t : Restricted data in the USA containing symptons and comordibity. Access granted. 
 
 ## Links with potential datasets
 
