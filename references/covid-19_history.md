@@ -1,6 +1,6 @@
-# Covid-19: Historical Summary
+# Covid-19: Historical summary and main events
 
-Ordered by year and author.
+Ordered by date and author.
 
 - Mulder, M., van der Vegt, D. S. J. M., Oude Munnink, B. B., GeurtsvanKessel, C. H., van de Bovenkamp, J., Sikkema, R. S., Jacobs, E. M. G., Koopmans, M. P. G., & Wegdam-Blans, M. C. A. (2020). Reinfection of SARS-CoV-2 in an immunocompromised patient: a case report. Clinical Infectious Diseases, 1–14. https://doi.org/10.1093/cid/ciaa1538. October 9.
 

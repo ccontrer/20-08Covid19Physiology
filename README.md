@@ -23,7 +23,7 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 - Fitting models to data:
   - [Influenza data](./julia/05%20Fitting%20models%20to%20influenza%20data.ipynb)
   - [Macaque monkey SARS-Cov2 data](./julia/06%20Fitting%20models%20to%20macaque%20monkey%20SARS-Cov2%20data.ipynb)
-  - [Human SARS-Cov2 data](./julia/08%20SARS-Cov2%20Physiology%20model.html)
+  - [Human SARS-Cov2 data](./julia/07%20Fitting%20models%20to%20human%20SARS-Cov2%20data.ipynb)
 
 ---
 
@@ -37,7 +37,7 @@ Supervisors: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay New
 
 ### Notebooks
 
-- [Model for the covid-19 in body organs](/julia/08%20SARS-Cov2%20Physiology%20model.ipynb)
+- [Model for the covid-19 in body organs](./julia/08%20SARS-Cov2%20Physiology%20model.html)
 
 --- 
 

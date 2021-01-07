@@ -6,10 +6,7 @@ Labels: `reinfection`, `long-term effects`, `inmunity`, `tests`, `viral load`, `
 
 Ordered by date (newest to oldest).
 
-### 2021 
-
-
-### 2020
+## 2020
 
 - December:
   - 21th: [New strain VUI-202012/01 originated in UK may spread more readly.](https://www.who.int/csr/don/21-december-2020-sars-cov2-variant-united-kingdom/en/) 
