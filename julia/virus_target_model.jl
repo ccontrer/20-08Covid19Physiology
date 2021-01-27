@@ -97,8 +97,3 @@ du[10] = dP = k_Cov19*c_Cov19*P_plasma*ACE2m/(K_mACE2i + P_plasma _ c_ACE2i*ACE2
 du[11] = dN = s_nr*R/(μ_nr + R) + k_AT1R*AT1RAngII - μ_n*N
 du[12] = dD = k_dn*f_s(f(N)) - μ_d*D
 du[13] = dC_A = s_c + k_cn*Q/(1 + Q) + k_ACE2p*ACE2p + k_Ang17*Ang17 + k_AT2R*AT2RAngII - μ_c*C_A
-
-PRA, c_ACE, c_NEP, h_AngI, k_ACE2, c_AT1R, c_AT2R, h_AngII, h_AT1R, h_AT2R, h_Ang17, S_ACE2m, c_ADAM17,
-        c_Cov19, K_mACE2m, c_ACE2i, h_ACE2, k_burst, k_ACE2P, k_Cov19, k_pg, P_∞, k_pm, s_m, μ_m, k_mp,
-        k_pn, C_A, c_∞, s_nr, μ_nr, k_AT1R, μ_n, k_nn, k_np, k_nd, k_dn, μ_d, x_dn, s_c, k_cn, k_ACE2p,
-        k_Ang17, k_AT2R, μ_c, k_cnd

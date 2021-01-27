@@ -27,3 +27,5 @@ Ordered by year and author.
   > One of the first references for the standard vial kinetic model developed for HIV.  
 
 [List of acronyms and abbreviations](./acronyms.md)
+
+[Main README file](./../README.md)
