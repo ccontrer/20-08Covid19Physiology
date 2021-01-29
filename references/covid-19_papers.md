@@ -2,15 +2,15 @@
 
 Ordered by date and author.
 
-Labels: `immune response`, `inflamatory response`, `machine learning`, `renin-angiotensin system`, `risk factors`, `study cases`, `tissue damage`
+Labels: `immune response`, `inflammatory response`, `machine learning`, `renin-angiotensin system`, `risk factors`, `study cases`, `tissue damage`
 
 - Mulder, M., van der Vegt, D. S. J. M., Oude Munnink, B. B., GeurtsvanKessel, C. H., van de Bovenkamp, J., Sikkema, R. S., Jacobs, E. M. G., Koopmans, M. P. G., & Wegdam-Blans, M. C. A. (2020). Reinfection of Severe Acute Respiratory Syndrome Coronavirus 2 in an Immunocompromised Patient: A Case Report. Clinical Infectious Diseases, 17(6), 365–366. https://doi.org/10.1093/cid/ciaa1538. October 9, 2020. `study cases`
 
   > First case of reinfection death.
 
-- Sadria, M., & Layton, A. T. (2020). Use of angiotensin-Converting enzyme inhibitors and angiotensin II receptor blockers during the COVID-19 pandemic: A modeling analysis. PLoS Computational Biology, 16(10), 1–16. https://doi.org/10.1371/journal.pcbi.1008235. October, 2020. `renin-angiotensin system` | `inflamatory response`
+- Sadria, M., & Layton, A. T. (2020). Use of angiotensin-Converting enzyme inhibitors and angiotensin II receptor blockers during the COVID-19 pandemic: A modeling analysis. PLoS Computational Biology, 16(10), 1–16. https://doi.org/10.1371/journal.pcbi.1008235. October, 2020. `renin-angiotensin system` | `inflammatory response`
 
-  > Study of the effect of ACE2-related drugs on COVID-19 patients, baed on mathematical modelling of RAS, ACE2, and inflamatory response and sensitivity analysis.
+  > Study of the effect of ACE2-related drugs on COVID-19 patients, baed on mathematical modelling of RAS, ACE2, and inflammatory response and sensitivity analysis.
 
 - Knight, S. R., Ho, A., Pius, R., Buchan, I., Carson, G., Drake, T. M., Dunning, J., Fairfield, C. J., Gamble, C., Green, C. A., Gupta, R., Halpin, S., Hardwick, H. E., Holden, K. A., Horby, P. W., Jackson, C., McLean, K. A., Merson, L., Nguyen-Van-Tam, J. S., … Harrison, E. M. (2020). Risk stratification of patients admitted to hospital with covid-19 using the ISARIC WHO Clinical Characterisation Protocol: Development and validation of the 4C Mortality Score. The BMJ, 370(September), 1–13. https://doi.org/10.1136/bmj.m3339. September, 2020. `risk classification` | `machine learning`
   
@@ -44,9 +44,9 @@ Labels: `immune response`, `inflamatory response`, `machine learning`, `renin-an
 
   > Study of risk factors of 191 COVID-19 patients in China (by March 2020). Age, hypertension and diabetes among the most important factors.
 
-- Madjid, M., Safavi-Naeini, P., Solomon, S. D., & Vardeny, O. (2020). Potential Effects of Coronaviruses on the Cardiovascular System: A Review. JAMA Cardiology, 5(7), 831–840. https://doi.org/10.1001/jamacardio.2020.1286. March, 2020. `cardiovarcular system`, `inflamatory response`
+- Madjid, M., Safavi-Naeini, P., Solomon, S. D., & Vardeny, O. (2020). Potential Effects of Coronaviruses on the Cardiovascular System: A Review. JAMA Cardiology, 5(7), 831–840. https://doi.org/10.1001/jamacardio.2020.1286. March, 2020. `cardiovarcular system`, `inflammatory response`
   
-  > Evidences of inflamatory burden on the cardiovascular system.
+  > Evidences of inflammatory burden on the cardiovascular system.
 
 - Yang, X., Yu, Y., Xu, J., Shu, H., Xia, J., Liu, H., Wu, Y., Zhang, L., Yu, Z., Fang, M., Yu, T., Wang, Y., Pan, S., Zou, X., Yuan, S., & Shang, Y. (2020). Clinical course and outcomes of critically ill patients with SARS-CoV-2 pneumonia in Wuhan, China: a single-centered, retrospective, observational study. The Lancet Respiratory Medicine, 8(5), 475–481. https://doi.org/10.1016/S2213-2600(20)30079-5. February 28, 2020. `risk factors`
 

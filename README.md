@@ -1,6 +1,14 @@
 # Covid 19 Physiology
 
-In collaboration with: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) and [Jay Newby](https://newby-jay.github.io/)
+In collaboration with: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/), [Jay Newby](https://newby-jay.github.io/), and [Junqi Liu](https://github.com/Junqi12138).
+
+---
+
+## Cases in Alberta
+
+The Government of Alberta [website](https://www.alberta.ca/stats/covid-19-alberta-statistics.htm) has highlight statistics and public data.
+
+[Data analysis (python notebook)](./python/03%20COVID-19%20Alberta.ipynb)
 
 ---
 
@@ -9,7 +17,9 @@ In collaboration with: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/) an
 This research focuses on within-host dynamics of the SARS-CoV-2. Why are people with underlying health conditions particularly at risk? Why some recovered patients experience long-term effects? How does the get to different parts of the body, and what it does to different organs? How does the within host dynamics change from variant to variant? This is a compiling and exploratory research of within host dynamics of SARS-CoV-2.
 
 - Risk of COVID-19 using machine learning
-- 
+- Renin-angiotensis system
+- Immune system
+-  
 
 [List of acronyms and abbreviations](./references/acronyms.md)
 
