@@ -2,9 +2,14 @@
 
 This recopilation focusses on inmune response and historic main events.
 
-Labels: `reinfection`, `long-term effects`, `inmunity`, `tests`, `viral load`, `variants`.
+Labels: `pandemic`, `reinfection`, `long-term effects`, `inmunity`, `tests`, `viral load`, `variants`.
 
 Ordered by date (newest to oldest).
+
+## 2021
+
+- February:
+  - 4th: [Flu season of Fall 2020 affected by COVID-19 restrictions.](https://www.theatlantic.com/science/archive/2021/02/covid-19-flu-season/617924/) The Atlantic (`pandemic`)
 
 ## 2020
 
