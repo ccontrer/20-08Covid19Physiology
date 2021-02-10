@@ -29,7 +29,7 @@ This research focuses on within-host dynamics of the SARS-CoV-2. Why are people 
 
 ### Notebooks
 
-- [Model for the covid-19 in body organs](./julia/08%20SARS-Cov2%20Physiology%20model.ipynb) [(html preview)](https://htmlpreview.github.io/?https://github.com/ccontrer/20-08Covid19Physiology/blob/master/julia/08%20SARS-Cov2%20Physiology%20model.html)
+- [Model for the covid-19 in body organs](./julia/08%20SARS-Cov2%20Physiology%20model.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/08%20SARS-Cov2%20Physiology%20model.html)
 
 --- 
 
@@ -45,14 +45,14 @@ A virus load curve is a time series of the amount of virus (measured in infectio
 
 ### Notebooks
 
-- [Virus load function: data fitting](./julia/02%20Fitting%20the%20virus%20load%20function.ipynb)
-- [Viral kinetic ODE model: numerical solution](./julia/01%20Solving%20the%20virus%20target%20model.ipynb)
-- [Viral kinetic ODE model: data fitting](./julia/03%20Fitting%20the%20virus%20target%20model.ipynb)
-- [Comparing the viral load function with the ODE model](./julia/04%20Comparing%20the%20virus%20load%20function%20with%20the%20virus-target%20model.ipynb)
+- [Virus load function: data fitting](./julia/02%20Fitting%20the%20virus%20load%20function.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/02%20Fitting%20the%20virus%20load%20function.ipynb)
+- [Viral kinetic ODE model: numerical solution](./julia/01%20Solving%20the%20virus%20target%20model.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/01%20Solving%20the%20virus%20target%20model.ipynb)
+- [Viral kinetic ODE model: data fitting](./julia/03%20Fitting%20the%20virus%20target%20model.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/03%20Fitting%20the%20virus%20target%20model.ipynb)
+- [Comparing the viral load function with the ODE model](./julia/04%20Comparing%20the%20virus%20load%20function%20with%20the%20virus-target%20model.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/04%20Comparing%20the%20virus%20load%20function%20with%20the%20virus-target%20model.ipynb)
 - Fitting models to data:
-  - [Influenza data](./julia/05%20Fitting%20models%20to%20influenza%20data.ipynb)
-  - [Macaque monkey SARS-Cov2 data](./julia/06%20Fitting%20models%20to%20macaque%20monkey%20SARS-Cov2%20data.ipynb)
-  - [Human SARS-Cov2 data](./julia/07%20Fitting%20models%20to%20human%20SARS-Cov2%20data.ipynb)
+  - [Influenza data](./julia/05%20Fitting%20models%20to%20influenza%20data.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/05%20Fitting%20models%20to%20influenza%20data.ipynb)
+  - [Macaque monkey SARS-Cov2 data](./julia/06%20Fitting%20models%20to%20macaque%20monkey%20SARS-Cov2%20data.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/06%20Fitting%20models%20to%20macaque%20monkey%20SARS-Cov2%20data.ipynb)
+  - [Human SARS-Cov2 data](./julia/07%20Fitting%20models%20to%20human%20SARS-Cov2%20data.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/06%20Fitting%20models%20to%20macaque%20monkey%20SARS-Cov2%20data.ipynb)
 
 ---
 
