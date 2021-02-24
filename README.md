@@ -1,14 +1,14 @@
 # Covid 19 Physiology
 
-In collaboration with: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/), [Jay Newby](https://newby-jay.github.io/), and [Junqi Liu](https://github.com/Junqi12138).
+[Physiology](#physiology-of-covid-19-research) |
+[Viral load](#virus-load-function-research) |
+[Alberta](#cases-in-alberta) |
+[Resources](#resources) |
+[Visualization](#visualization-tools)
 
----
+Work description
 
-## Cases in Alberta
-
-The Government of Alberta [website](https://www.alberta.ca/stats/covid-19-alberta-statistics.htm) has highlight statistics and public data.
-
-[Data analysis (python notebook)](./python/03%20COVID-19%20Alberta.ipynb)
+Collaborators: [Thomas Hillen](http://www.math.ualberta.ca/~thillen/), [Jay Newby](https://newby-jay.github.io/), and [Junqi Liu](https://github.com/Junqi12138).
 
 ---
 
@@ -19,7 +19,6 @@ This research focuses on within-host dynamics of the SARS-CoV-2. Why are people 
 - Risk of COVID-19 using machine learning
 - Renin-angiotensis system
 - Immune system
--  
 
 [List of acronyms and abbreviations](./references/acronyms.md)
 
@@ -56,6 +55,14 @@ A virus load curve is a time series of the amount of virus (measured in infectio
 
 ---
 
+## Cases in Alberta
+
+The Government of Alberta [website](https://www.alberta.ca/stats/covid-19-alberta-statistics.htm) has highlight statistics and public data.
+
+[Data analysis](./python/03%20COVID-19%20Alberta.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/python/03%20COVID-19%20Alberta.ipynb)
+
+---
+
 ### Resources:
 
 - [Covid-19 Physiology Group](https://sites.google.com/ualberta.ca/cov-pg/home) 
@@ -63,6 +70,7 @@ A virus load curve is a time series of the amount of virus (measured in infectio
 - [Data sets](references/datasets.md)
 - [WHO Quick links](https://www.who.int/emergencies/diseases/novel-coronavirus-2019)
 - [PhysiCell simulator](http://physicell.org/)
+- [C19 Index (vulnerality score)](https://closedloop.ai/c19index/)
 
 ### Visualization tools
 
@@ -72,3 +80,4 @@ A virus load curve is a time series of the amount of virus (measured in infectio
 - [Tracker Canada](https://covid19tracker.ca/)
 - [Covid Trends (aatsihb)](https://aatishb.com/covidtrends/)
 - [Next strain](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501,69&p=grid&r=country)
+- [Capacity management](https://covid-hospital-operations.com/about#aboutus)
