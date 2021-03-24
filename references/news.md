@@ -2,11 +2,14 @@
 
 This recopilation focusses on inmune response and historic main events.
 
-Labels: `pandemic`, `reinfection`, `long-term effects`, `inmunity`, `tests`, `viral load`, `variants`.
+Labels: `pandemic`, `reinfection`, `long-term effects`, `inmunity`, `tests`, `viral load`, `vaccine`, `variants`.
 
 Ordered by date (newest to oldest).
 
 ## 2021
+
+- March:
+  - 10th: [Austria suspends AstraZeneca vacine after a person was diagnosed wih multiple thrombosis](https://www.ema.europa.eu/en/news/covid-19-vaccine-astrazeneca-prac-preliminary-view-suggests-no-specific-issue-batch-used-austria). EM (`vaccine`) 
 
 - February:
   - 4th: [Flu season of Fall 2020 affected by COVID-19 restrictions.](https://www.theatlantic.com/science/archive/2021/02/covid-19-flu-season/617924/) The Atlantic (`pandemic`)

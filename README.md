@@ -80,4 +80,5 @@ The Government of Alberta [website](https://www.alberta.ca/stats/covid-19-albert
 - [Tracker Canada](https://covid19tracker.ca/)
 - [Covid Trends (aatsihb)](https://aatishb.com/covidtrends/)
 - [Next strain](https://nextstrain.org/groups/neherlab/ncov/S.N501?c=gt-S_501,69&p=grid&r=country)
+- [Vaccination projection](https://timetoherd.com/)
 - [Capacity management](https://covid-hospital-operations.com/about#aboutus)

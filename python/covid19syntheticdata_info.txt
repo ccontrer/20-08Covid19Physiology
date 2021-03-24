@@ -1,0 +1,22 @@
+Date reported: date of case reported
+Alberta Health Services Zone: aministrative zome
+Gender: gender at birth
+Age group: age when case reported
+Case status: either active, recovered, or died.
+Case type: either confirmed or probable
+Hospitalized: true or false
+ICU: true or false
+Hypertension:  true or false
+Cardio-Vascular Diseases: true or false
+Dementia: true or false
+Renal Diseases: true or false
+Diabetes: true or false
+Respiratory Diseases: true or false
+Cancer: true or false
+Stroke: true or false
+Liver Diseases: true or false
+Immuno-Deficiency Diseases: true or false
+Admission date: date of admission to hospital or ICU
+Oxygen saturation: in percentage
+D-Dimer: in ng/mL
+C reactive: in mg/L

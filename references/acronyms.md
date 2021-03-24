@@ -3,6 +3,7 @@
 - ACE2: Angiotensin-converting enzyme 2. Converts angiotensin II into angiotensin (1-7). https://en.wikipedia.org/wiki/Angiotensin-converting_enzyme_2
 - ACEi: Angiotensin-converting enzyme inhibitors. Class of medication use to treat high blood preasure and heart failure. https://en.wikipedia.org/wiki/ACE_inhibitor
 - ARB: Angiotensin II receptor blockers. Medication that blocks the action of angiotensin II. https://www.medicinenet.com/angiotensin_ii_receptor_blockers/article.htm
+- CD8: cluster of differentiation 8, transmembrane glycoprotein that serves as a co-receptor for the T-cell receptor (TCR). https://en.wikipedia.org/wiki/CD8 
 - DBP: diastolic blood presure. https://en.wikipedia.org/wiki/Blood_pressure
 - IAV: Influenza A virus. 
 - HCV: Hepatitis C virus. https://en.wikipedia.org/wiki/Hepatitis_C
