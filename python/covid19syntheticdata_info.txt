@@ -4,6 +4,7 @@ Gender: gender at birth
 Age group: age when case reported
 Case status: either active, recovered, or died.
 Case type: either confirmed or probable
+Number of comorbidities: no comorbodities, 1, 2, and 3 or more
 Hospitalized: true or false
 ICU: true or false
 Hypertension:  true or false
