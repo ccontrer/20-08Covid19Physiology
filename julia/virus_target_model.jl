@@ -6,12 +6,14 @@ struct VTMResult
     u0::Vector
 end
 
-ViralTargetODE = @ode_def begin
-    dT = -β*T*V
-    dI₁ = β*T*V - k*I₁
-    dI₂ = k*I₁ - δ*I₂/(K + I₂)
-    dV = p*I₂ - c*V
-end β k δ K p c
+function ViralTargetODE!(du, u, p, t)
+    T, I₁, I₂, V = u
+    β, k, δ, K, p, c = p
+    du[1] = dT = -β*T*V
+    du[2] = dI₁ = β*T*V - k*I₁
+    du[3] = dI₂ = k*I₁ - δ*I₂/(K + I₂)
+    du[4] = dV = p*I₂ - c*V
+end
 
 u0default = [1e+7, 75.0, 0.0, 1e-12]
 lbdefault = [0.0, 0.0, 0.0, 0.0, 0.0]
@@ -25,7 +27,7 @@ function LogViralTargetModel(t, p, data, u0)
             K = p[3],
             p = p[4],
             c = p[5])
-    prob = ODEProblem(ViralTargetODE, u0, tspan, pars)
+    prob = ODEProblem(ViralTargetODE!, u0, tspan, values(pars))
     sol = solve(prob, Tsit5(), dtmax=1e-2)
     log10.(sol(t)[end, :])
 end
@@ -83,17 +85,3 @@ function Base.summary(result::VTMResult)
         end
     end
 end
-
-du[1]  = dAngI = PRA - (c_ACE + c_NEP)*AngI - ln(2.)/h_AngI*AngI
-du[2]  = dAngII = c_ACE*AngI - k_ACE2*ACE2m*AngII - (c_AT1R + c_AT2R)*AngII - ln(2.)*AngII/h_AngII
-du[3]  = dAT1AngII = c_AT1R*AngII - ln(2.)*AT1RAngII/h_AT1R
-du[4]  = dAT2AngII = c_AT2R*AngII - ln(2.)*AT2RAngII/h_AT2R
-du[5]  = dAng17 = c_NEP*AngI + k_ACE2*ACE2m*AngII - ln(2.)*Ang17/h_Ang17
-du[6]  = dACE2m = S_ACE2m - (c_ADAM17 + c_AT1R*AT1RAngII + c_Cov19*P_plasma/(K_mACE2i + P_plasma + c_ACE2i*ACE2p))*ACE2m - ln(2.)*ACE2m/h_ACE2
-du[7]  = dACE2p = c_ADAM17*ACE2m - ln(2.)*ACE2p/h_ACE2
-du[8]  = dACE2i = (c_AT1R*AT1RAngII + c_Cov19*P_plasma/(K_mACE2i + P_plasma + c_ACE2i*ACE2p))*ACE2m - ln(2.)*ACE2i/h_ACE2
-du[9]  = dP_plasma = k_burst*P - k_ACE2P*ACE2p*P_plasma     - c_Cov19*P_plasma*ACE2m/(K_mACE2i + P_plasma _ c_ACE2i*ACE2p)
-du[10] = dP = k_Cov19*c_Cov19*P_plasma*ACE2m/(K_mACE2i + P_plasma _ c_ACE2i*ACE2p) + k_pg*P*(1 - P/P_∞) - k_pm*s_m*P/(μ_m + k_mp*P) - k_pn*f(N) - k_burst*P
-du[11] = dN = s_nr*R/(μ_nr + R) + k_AT1R*AT1RAngII - μ_n*N
-du[12] = dD = k_dn*f_s(f(N)) - μ_d*D
-du[13] = dC_A = s_c + k_cn*Q/(1 + Q) + k_ACE2p*ACE2p + k_Ang17*Ang17 + k_AT2R*AT2RAngII - μ_c*C_A

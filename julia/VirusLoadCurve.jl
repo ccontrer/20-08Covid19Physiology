@@ -6,7 +6,7 @@ module VirusLoadCurve
            LogViralTargetModel,
            VirusLoadData
 
-    using OrdinaryDiffEq, ParameterizedFunctions
+    using OrdinaryDiffEq
     using Optim, LsqFit
     using Plots, LaTeXStrings
     using DelimitedFiles, DataFrames
