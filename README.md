@@ -28,7 +28,7 @@ This research focuses on within-host dynamics of the SARS-CoV-2. Why are people 
 
 ### Notebooks
 
-- [Model for the covid-19 in body organs](./julia/08%20SARS-Cov2%20Physiology%20model.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/08%20SARS-Cov2%20Physiology%20model.html)
+- [Model for the covid-19 in body organs](./julia/yter 08%20SARS-Cov2%20Physiology%20model.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/08%20SARS-Cov2%20Physiology%20model.html)
 
 --- 
 
