@@ -134,3 +134,6 @@ dmypy.json
 # Notebooks
 .ipynb_checkpoints/
 python/04 COVID-19 Alberta synthetic data.ipynb
+
+# R
+*.RData

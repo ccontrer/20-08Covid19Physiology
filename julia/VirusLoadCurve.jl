@@ -11,6 +11,7 @@ module VirusLoadCurve
     using Plots, LaTeXStrings
     using DelimitedFiles, DataFrames
     using Statistics
+    using Turing
     using Printf
 
     import Base.summary

@@ -5,6 +5,8 @@ struct VLFResult
     p0::Vector
 end
 
+# TODO: implement confidence intervals
+
 heaviside(x::AbstractFloat) = ifelse(x < 0, zero(x), ifelse(x > 0, one(x), oftype(x,0.5)))
 
 v₁(t, a₁, a₂, logVmax) = 1. + (10^logVmax - 1.0)*(tanh(6.0*(t - (a₁ + a₂)/2)/abs(a₂ - a₁)) - tanh(-3.0*(a₂ + a₁)/abs(a₂ - a₁)))/2
@@ -53,6 +55,24 @@ function fitVLF(data::VirusLoadData, p0::Vector)
     VLFResult(fit, data, names, p0)
 end
 
+function confidence_interval(result::VLFResult)
+    @model function errors_model(t, v)
+        s ~ truncated(Normal(0, 1), 0, Inf)
+        
+        for i in eachindex(v)
+            v[i] ~ Normal(LogEmpiricalVirusLoadFunction(result.data.t, result.fit.minimizer, result.data), s)
+        end
+    end
+        
+    err = zero(result.data.t)
+    for i in eachindex(tdata)
+        chain = sample(errors_model(tdata[i], data[:, i]), SMC(), 1000)
+        err[i] = mean(chain[:s])
+    end
+    # This next command runs 3 independent chains without using multithreading. 
+    # chain = mapreduce(c -> sample(VLFmodel(ttdata, vvdata), SMC(),1000), chainscat, 1:3)
+end
+
 @recipe function f(result::VLFResult; empirical=false, stderrors=false)
     tmin, tmax = 0.0, maximum(result.data.t)
     vmin, vmax = extrema(result.data.v)
@@ -64,6 +84,7 @@ end
         yy = LogVirusLoadFunction(tt, result.fit.minimizer, result.data)
     end
     y := yy
+    # FIXME: replace this code
     # if stderrors
     #     CI = try 
     #         confidence_interval(result.fit, 0.05)
