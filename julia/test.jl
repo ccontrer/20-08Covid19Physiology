@@ -1,51 +1,24 @@
+using Plots, LaTeXStrings
+using DelimitedFiles
 using Revise
 
-using Optim, LsqFit
-using Plots, StatsPlots, LaTeXStrings
-using CSV
-using Statistics
-using Turing
-using DataFrames
-using Distributions
+cd("julia/")
+push!(LOAD_PATH, ".")
+using VirusLoadCurve
 
-df = DataFrame(CSV.File("./R/dat.csv"))
+tdata = [4.0/24.0, 1., 2., 3., 4., 5., 6., 7., 8., 9., 10., 11., 12.]
+RAWDATA = readdlm("../../data/Smith2018/Virus_Best10.txt", ' ', Float64, '\n')
 
-f(x, a, b, c) = a + (b - a)*exp(-exp(c)*x)
+k = 6
+ttdata = repeat(tdata, inner=1)
+tend = ttdata[end]
+vvdata = reshape(RAWDATA[k, :], 1, :)[:]
 
-@model function model(data)
-     ~ Normal(25, sqrt(2))
-    ϕ₁ ~ Normal(8, sqrt(2))
-    ϕ₂ ~ Normal(-1, sqrt(2))
+data = VirusLoadCurve.VirusLoadData(ttdata, vvdata)
 
-    γ₀ ~ Normal(0, 1)
-    γ₁ ~ Normal(1, 1)
-    γ₂ ~ Normal(0, 1)
-    
-    τϕ₁ ~ TDist(3)
-    τϕ₂ ~ TDist(3)
-    τϕ₃ ~ TDist(3)
-    τγ₁ ~ TDist(3)
-    τγ₂ ~ TDist(3)
-    τγ₃ ~ TDist(3)
+par0 = [0.70, 2.88, 6.00, 7.60, 0.20, 5.0]
+resultVLF = VirusLoadCurve.fitVLF(data; ϵ=0.1)
+summary(resultVLF)
 
-    Ω ~ LKJ(1)
-
-    for i ∈ eachindex(data)
-        for t ∈  eachindex(datai)
-            σ[i,t] = exp(f(trial, γ₀, γ₁, γ₂))
-            ϵ[i,t] ~ Normal(0, σ[i,j])
-            y[i,t] = f(trial, ϕ₀, ϕ₁, ϕ₂) + ϵ[i, t]
-        end
-    end
-end
-
-
-@model function test(x)
-    a ~ Normal(0, 1)
-    b ~ Normal(5, 1)
-    # c ~ Normal(0, 1) + Uniform(0, 1)
-    d = a + b
-    x = d
-end
-
-chain = sample(test(missing), Prior(), 1000)
+plot(data)
+plot!(resultVLF, empirical=true)
