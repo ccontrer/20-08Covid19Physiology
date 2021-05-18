@@ -1,36 +1,39 @@
 struct VLFResult
-    fit::Optim.MultivariateOptimizationResults
+    # fit::Optim.MultivariateOptimizationResults
+    fit::LsqFit.LsqFitResult
+    param_array::AbstractArray
     data::VirusLoadData
     names::Vector
-    p0::Vector
 end
 
 # TODO: implement confidence intervals
 
-heaviside(x::AbstractFloat) = ifelse(x < 0, zero(x), ifelse(x > 0, one(x), oftype(x,0.5)))
+# H(x::AbstractFloat) = ifelse(x < 0, zero(x), ifelse(x > 0, one(x), oftype(x,0.5)))
+H(x) = 0.5*(tanh(1e3*x) + 1.)
 
 v₁(t, a₁, a₂, logVmax) = 1. + (10^logVmax - 1.0)*(tanh(6.0*(t - (a₁ + a₂)/2)/abs(a₂ - a₁)) - tanh(-3.0*(a₂ + a₁)/abs(a₂ - a₁)))/2
 
-v₂(t, a₂, α) = 1. - heaviside(t - a₂) + heaviside(t - a₂)*exp(-α*(t - a₂))
+v₂(t, a₂, α) = 1. - H(t - a₂) + H(t - a₂)*exp(-α*(t - a₂))
 
 v₃(t, b₁, b₂, logVmin) = 1. - (1.0 - 10^logVmin)*(tanh(6.0*(t - (b₁ + b₂)/2)/abs(b₂ - b₁)) - tanh(-3.0*(b₂ + b₁)/abs(b₂ - b₁)))/2
 
 function assert_params(a₁, a₂, b₁, b₂, α, logVmax)
-    if a₁ > a₂ @error("a₁ > a₂") end
-    if a₂ > b₁ @error("a₂ > b₁") end
-    if b₁ > b₂ @error("b₁ > b₂") end
+    all([a₁ < a₂, a₂ < b₁, b₁ < b₂, a₁ > 0, a₂ > 0, b₁ > 0, b₂ > 0, α > 0, logVmax > 0])
 end
 
-function LogVirusLoadFunction(t, p, data::VirusLoadData)
+function LogVirusLoadFunction(t, a₁, a₂, b₁, b₂, α, logVmax)
     logVmin = -7.0
-    a₁, a₂, b₁, b₂, α, logVmax = p
-    log10.(v₁.(t, a₁, a₂, logVmax).*v₂.(t, a₂, α).*v₃.(t, b₁, b₂, logVmin))
+    log10(v₁(t, a₁, a₂, logVmax)*v₂(t, a₂, α)*v₃(t, b₁, b₂, logVmin))
 end
 
-function LogEmpiricalVirusLoadFunction(t, p, data::VirusLoadData)
+function LogEmpiricalVirusLoadFunction(t::Vector, p::Vector, data::VirusLoadData)
     θ = minimum(data.v)
-    logV = LogVirusLoadFunction(t, p, data::VirusLoadData)
+    logV = LogVirusLoadFunction.(t, p...)
     max.(logV, θ)
+end
+
+function rss(p, data)
+    sum(abs2, LogEmpiricalVirusLoadFunction(data.t, p, data) - data.v)
 end
 
 function get_bounds(data, p0)
@@ -45,71 +48,102 @@ function get_bounds(data, p0)
     ub   = [a₁a₂, a₂b₁, b₁b₂, tmax, 1e+4, vmax+3.0]
     return lb, ub
 end
-    
-
-function fitVLF(data::VirusLoadData, p0::Vector)
-    cost(p) = sum(abs2, LogEmpiricalVirusLoadFunction(data.t, p, data) - data.v)
-    lb, ub = get_bounds(data, p0)
-    fit = optimize(cost, lb, ub, p0, SAMIN(), Optim.Options(iterations=10^4))
-    names = ["a₁", "a₂", "b₁", "b₂", "α", "logVmax"]
-    VLFResult(fit, data, names, p0)
+   
+function get_rand_pars(fit1, data)
+    tmax = maximum(data.t)
+    p = fit1.param
+    s = tmax/10.0
+    a₁ = rand(truncated(Normal(p[1], s), 0, tmax))
+    a₂ = rand(truncated(Normal(p[2], s), a₁, tmax))
+    b₁ = rand(truncated(Normal(p[3], s), a₂, tmax))
+    b₂ = rand(truncated(Normal(p[4], s), b₁, tmax))
+    α = rand(truncated(Normal(p[5], 0.1), 0, Inf))
+    logVmax = rand(truncated(Normal(p[6], 0.5), 0, Inf))
+    return [a₁, a₂, b₁, b₂, α, logVmax]
 end
 
-function confidence_interval(result::VLFResult)
-    @model function errors_model(t, v)
-        s ~ truncated(Normal(0, 1), 0, Inf)
-        
-        for i in eachindex(v)
-            v[i] ~ Normal(LogEmpiricalVirusLoadFunction(result.data.t, result.fit.minimizer, result.data), s)
+function fitVLF(data::VirusLoadData, p0::Vector)
+    lb, ub = get_bounds(data, p0)
+    return curve_fit((t, p) -> LogEmpiricalVirusLoadFunction(t, p, data), data.t, data.v, p0, lower=lb, upper=ub)
+    # cost(p) = sum(abs2, LogEmpiricalVirusLoadFunction(data.t, p, data) - data.v)
+    # fit = optimize(cost, lb, ub, p0, SAMIN(), Optim.Options(iterations=10^4))
+end
+
+function fitVLF(data::VirusLoadData; ϵ=0.1)
+    # Best parameter
+    fit1 = nothing
+    niter = 10^3
+    pb1 = Progress(niter, 0.5, "Fitting the VLF to data ")
+    for iter = 1:niter
+        #      a₁,     a₂,     b₁,     b₂      α,      logVmax
+        par0 = vcat(sort(data.t[end]*rand(4)), rand(), maximum(data.v)*(rand()+0.5))
+        fit0 = try 
+            VirusLoadCurve.fitVLF(data, par0)
+        catch y
+            nothing
         end
+        if fit0 != nothing
+            if fit1 == nothing
+                fit1 = fit0
+            else
+                if sum(abs2, fit0.resid) < sum(abs2, fit1.resid)
+                    fit1 = fit0
+                end
+            end
+        end
+        next!(pb1)
     end
-        
-    err = zero(result.data.t)
-    for i in eachindex(tdata)
-        chain = sample(errors_model(tdata[i], data[:, i]), SMC(), 1000)
-        err[i] = mean(chain[:s])
+    # Set of parameters
+    param_array = []
+    niter = 10^6
+    tol = (1.0 + ϵ)*rss(fit1.param, data)
+    pb2 = Progress(niter, 0.5, "Finding possible parameter values ")
+    for k = 1:niter
+        par = get_rand_pars(fit1, data)
+        if (rss(par, data) < tol && assert_params(par...))
+            push!(param_array, par)
+        end
+        next!(pb2)
     end
-    # This next command runs 3 independent chains without using multithreading. 
-    # chain = mapreduce(c -> sample(VLFmodel(ttdata, vvdata), SMC(),1000), chainscat, 1:3)
+    println("Number of possible parameter found: ", length(param_array))
+    names = ["a₁", "a₂", "b₁", "b₂", "α", "logVmax"]
+    VLFResult(fit1, param_array, data, names)
+end
+
+function param_extrema(param_array)
+    if length(param_array)==0 return zip(fill(-Inf, 6), fill(Inf, 6)) end
+    array = map(x -> map(y -> y[x], param_array), 1:length(param_array[1]))
+    param_lower = map(minimum, array)
+    param_upper = map(maximum, array)
+    return zip(param_lower, param_upper)
 end
 
 @recipe function f(result::VLFResult; empirical=false, stderrors=false)
-    tmin, tmax = 0.0, maximum(result.data.t)
+    tmin, tmax = extrema(result.data.t)
     vmin, vmax = extrema(result.data.v)
     tt = Vector(range(tmin, tmax, step=1e-2))
     x := tt
     if empirical
-        yy = LogEmpiricalVirusLoadFunction(tt, result.fit.minimizer, result.data)
+        # yy = LogEmpiricalVirusLoadFunction(tt, result.fit.minimizer, result.data)
+        yy = LogEmpiricalVirusLoadFunction(tt, result.fit.param, result.data)
+        yylower = yyupper = yy
+        for param in result.param_array
+            yy0 = LogEmpiricalVirusLoadFunction(tt, param, result.data)
+            yylower = min.(yylower, yy0)
+            yyupper = max.(yyupper, yy0)
+        end
     else
-        yy = LogVirusLoadFunction(tt, result.fit.minimizer, result.data)
+        # yy = LogVirusLoadFunction(tt, result.fit.minimizer, result.data)
+        yy = LogVirusLoadFunction.(tt, result.fit.param...)
+        yylower = yyupper = yy
+        for param in result.param_array
+            yy0 = LogVirusLoadFunction.(tt, param...)
+            yylower = min.(yylower, yy0)
+            yyupper = max.(yyupper, yy0)
+        end
     end
     y := yy
-    # FIXME: replace this code
-    # if stderrors
-    #     CI = try 
-    #         confidence_interval(result.fit, 0.05)
-    #     catch
-    #         false
-    #     end
-    #     yymin = yymax = yy
-    #     if ~(CI == false)
-    #         for k in 1:50
-    #             par0 = [(CI[i][2]-CI[i][1])*rand()+CI[i][1] for i in 1:length(CI)]
-    #             try 
-    #                 if empirical
-    #                     yy0 = LogEmpiricalVirusLoadFunction(tt, par0, result.data)
-    #                 else
-    #                     yy0 = LogVirusLoadFunction(tt, par0, result.data)
-    #                 end
-    #                 yymin = min.(yymin, yy0)
-    #                 yymax = max.(yymax, yy0)
-    #             catch
-    #                 continue
-    #             end
-    #         end
-    #     end
-    #     ribbon := (yy-yymin, yymax-yy)
-    # end
+    ribbon := (yy-yylower, yyupper-yy)
     linewidth --> 4
     xaxis --> ("Time (days)", (tmin, tmax))
     yaxis --> (L"\log\,V(t)", (vmin-1, vmax+1))
@@ -119,22 +153,7 @@ end
 end
 
 function Base.summary(result::VLFResult)
-    println(@sprintf "RSS = %.5e" result.fit.minimum)
-    # CI = try 
-    #     confidence_interval(result.fit, 0.05)
-    # catch
-    #     false
-    # end
-    for i in 1:length(result.fit.minimizer)
-        name = result.names[i]
-        val = result.fit.minimizer[i]
-        p0 = result.p0[i]
-        # if CI == false
-        println(@sprintf "  %s = %.3e (initial=%.3e)" name val p0)
-        # else
-        #     CIl = CI[i][1]
-        #     CIr = CI[i][2]
-        #     println(@sprintf "  %s = %.3e (CI=(%.3e, %.3e), initial=%.3e)" name val CIl CIr p0)
-        # end
-    end
+    println(@sprintf "RSS = %.5e" sum(abs2, result.fit.resid))
+    [println(p, " = ", v, ", CI=", ci) for (p, v, ci) in zip(result.names, result.fit.param, param_extrema(result.param_array))]
+    nothing
 end

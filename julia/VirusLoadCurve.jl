@@ -5,7 +5,6 @@ module VirusLoadCurve
            fitVTM,
            LogViralTargetModel,
            VirusLoadData
-
     using OrdinaryDiffEq
     using Optim, LsqFit
     using Plots, LaTeXStrings
@@ -13,6 +12,7 @@ module VirusLoadCurve
     using Statistics
     using Turing
     using Printf
+    using ProgressMeter
 
     import Base.summary
 
@@ -27,11 +27,9 @@ module VirusLoadCurve
         x := data.t
         y := data.v
         seriestype := :scatter
-        size --> (400, 400)
         xaxis --> ("Time (days)", (0.0, tmax), font(14))
         yaxis --> (L"\log\,V(t)", (vmin-0.5, vmax+0.5), font(14))
         label --> "Data"
-        legend --> :none
         grid --> :none
         ()
     end
