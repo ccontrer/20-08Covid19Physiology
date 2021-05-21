@@ -20,5 +20,6 @@ par0 = [0.70, 2.88, 6.00, 7.60, 0.20, 5.0]
 resultVLF = VirusLoadCurve.fitVLF(data; ϵ=0.1)
 summary(resultVLF)
 
+
 plot(data)
-plot!(resultVLF, empirical=true)
+plot!(resultVLF)

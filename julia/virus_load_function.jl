@@ -121,7 +121,7 @@ end
 @recipe function f(result::VLFResult; empirical=false, stderrors=false)
     tmin, tmax = extrema(result.data.t)
     vmin, vmax = extrema(result.data.v)
-    tt = Vector(range(tmin, tmax, step=1e-2))
+    tt = Vector(range(tmin, tmax, step=1e-3))
     x := tt
     if empirical
         # yy = LogEmpiricalVirusLoadFunction(tt, result.fit.minimizer, result.data)
@@ -143,10 +143,12 @@ end
         end
     end
     y := yy
-    ribbon := (yy-yylower, yyupper-yy)
+    linecolor --> :black
     linewidth --> 4
-    xaxis --> ("Time (days)", (tmin, tmax))
-    yaxis --> (L"\log\,V(t)", (vmin-1, vmax+1))
+    ribbon := (yy-yylower, yyupper-yy)
+    fillalpha --> 0.4
+    xaxis := ("Time (days)", (tmin, tmax))
+    yaxis := (L"\log\,V(t)", (vmin-0.5, vmax+0.5))
     grid --> :none
     label --> "Virus load function"
     ()
