@@ -118,40 +118,47 @@ function param_extrema(param_array)
     return zip(param_lower, param_upper)
 end
 
-@recipe function f(result::VLFResult; empirical=false, stderrors=false)
+@recipe function f(result::VLFResult; empirical=false, plotrange=true)
     tmin, tmax = extrema(result.data.t)
-    vmin, vmax = extrema(result.data.v)
     tt = Vector(range(tmin, tmax, step=1e-3))
-    x := tt
-    if empirical
-        # yy = LogEmpiricalVirusLoadFunction(tt, result.fit.minimizer, result.data)
-        yy = LogEmpiricalVirusLoadFunction(tt, result.fit.param, result.data)
+    func = empirical ? ((t, p) -> LogEmpiricalVirusLoadFunction(t, p, result.data)) : ((t, p) -> LogVirusLoadFunction.(t, p...))
+    yy = func(tt, result.fit.param)
+    vmin, vmax = extrema(result.data.v)
+    xaxis := ("Time (days)", (tmin, tmax), font(14))
+    yaxis := (L"\log\,V(t)", (vmin-0.5, vmax+0.5), font(14))
+    grid --> :none
+    
+    @series begin
+        x := tt
+        y := yy
+        linecolor := :black
+        linewidth := 4
+        label := ("Virus load function")
+        ()
+    end
+
+    if plotrange
         yylower = yyupper = yy
         for param in result.param_array
-            yy0 = LogEmpiricalVirusLoadFunction(tt, param, result.data)
+            yy0 = func(tt, param)
             yylower = min.(yylower, yy0)
             yyupper = max.(yyupper, yy0)
         end
-    else
-        # yy = LogVirusLoadFunction(tt, result.fit.minimizer, result.data)
-        yy = LogVirusLoadFunction.(tt, result.fit.param...)
-        yylower = yyupper = yy
-        for param in result.param_array
-            yy0 = LogVirusLoadFunction.(tt, param...)
-            yylower = min.(yylower, yy0)
-            yyupper = max.(yyupper, yy0)
+        vmax = max(vmax, maximum(yyupper))
+        ylims := (vmin-0.5, vmax+0.5)
+    
+        @series begin
+            x := tt
+            y := yylower
+            linewidth := 0
+            fillcolor := 2
+            fillalpha := 0.4
+            fillrange := yyupper
+            label := ("Range of VLF")
+            ()
         end
     end
-    y := yy
-    linecolor --> :black
-    linewidth --> 4
-    ribbon := (yy-yylower, yyupper-yy)
-    fillalpha --> 0.4
-    xaxis := ("Time (days)", (tmin, tmax))
-    yaxis := (L"\log\,V(t)", (vmin-0.5, vmax+0.5))
-    grid --> :none
-    label --> "Virus load function"
-    ()
+
 end
 
 function Base.summary(result::VLFResult)
