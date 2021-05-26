@@ -52,12 +52,12 @@ end
 function get_rand_pars(fit1, data)
     tmax = maximum(data.t)
     p = fit1.param
-    s = tmax/10.0
+    s = 1.1
     a₁ = rand(truncated(Normal(p[1], s), 0, tmax))
     a₂ = rand(truncated(Normal(p[2], s), a₁, tmax))
     b₁ = rand(truncated(Normal(p[3], s), a₂, tmax))
     b₂ = rand(truncated(Normal(p[4], s), b₁, tmax))
-    α = rand(truncated(Normal(p[5], 0.1), 0, Inf))
+    α = rand(truncated(Normal(p[5], 0.5), 0, Inf))
     logVmax = rand(truncated(Normal(p[6], 0.5), 0, Inf))
     return [a₁, a₂, b₁, b₂, α, logVmax]
 end
@@ -94,7 +94,7 @@ function fitVLF(data::VirusLoadData; ϵ=0.1)
         next!(pb1)
     end
     # Set of parameters
-    param_array = []
+    param_array = [fit1.param]
     niter = 10^6
     tol = (1.0 + ϵ)*rss(fit1.param, data)
     pb2 = Progress(niter, 0.5, "Finding possible parameter values ")
@@ -151,6 +151,8 @@ end
             x := tt
             y := yylower
             linewidth := 0
+            linecolor := 2
+            linealpha := 0.4
             fillcolor := 2
             fillalpha := 0.4
             fillrange := yyupper
