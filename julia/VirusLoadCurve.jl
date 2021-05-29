@@ -4,7 +4,8 @@ module VirusLoadCurve
            LogVirusLoadFunction,
            fitVTM,
            LogViralTargetModel,
-           VirusLoadData
+           VirusLoadData,
+           Boxplots
     using OrdinaryDiffEq
     using Optim, LsqFit
     using Plots, LaTeXStrings
@@ -27,10 +28,10 @@ module VirusLoadCurve
         x := data.t
         y := data.v
         seriestype := :scatter
-        xaxis --> ("Time (days)", (0.0, tmax), font(14))
-        yaxis --> (L"\log\,V(t)", (vmin-0.5, vmax+0.5), font(14))
-        label --> "Data"
-        grid --> :none
+        xaxis := ("Time (days)", (0.0, tmax), font(14))
+        yaxis := (L"\log\,V(t)", font(14))
+        label := "Data"
+        grid := :none
         ()
     end
 

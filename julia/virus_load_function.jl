@@ -105,7 +105,7 @@ function fitVLF(data::VirusLoadData; ϵ=0.1)
         end
         next!(pb2)
     end
-    println("Number of possible parameter found: ", length(param_array))
+    println("Number of possible parameters found: ", length(param_array), " (out of ", niter, " testted)")
     names = ["a₁", "a₂", "b₁", "b₂", "α", "logVmax"]
     VLFResult(fit1, param_array, data, names)
 end
@@ -125,8 +125,8 @@ end
     yy = func(tt, result.fit.param)
     vmin, vmax = extrema(result.data.v)
     xaxis := ("Time (days)", (tmin, tmax), font(14))
-    yaxis := (L"\log\,V(t)", (vmin-0.5, vmax+0.5), font(14))
-    grid --> :none
+    yaxis := (L"\log\,V(t)", font(14))
+    grid := :none
     
     @series begin
         x := tt
