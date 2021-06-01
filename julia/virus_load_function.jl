@@ -6,8 +6,6 @@ struct VLFResult
     names::Vector
 end
 
-# TODO: implement confidence intervals
-
 # H(x::AbstractFloat) = ifelse(x < 0, zero(x), ifelse(x > 0, one(x), oftype(x,0.5)))
 H(x) = 0.5*(tanh(1e3*x) + 1.)
 
@@ -139,7 +137,8 @@ end
 
     if plotrange
         yylower = yyupper = yy
-        for param in result.param_array
+        pmin = min(length(result.param_array), 1000)
+        for param in result.param_array[1:pmin]
             yy0 = func(tt, param)
             yylower = min.(yylower, yy0)
             yyupper = max.(yyupper, yy0)
