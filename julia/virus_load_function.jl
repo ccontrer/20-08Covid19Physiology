@@ -67,10 +67,10 @@ function fitVLF(data::VirusLoadData, p0::Vector)
     # fit = optimize(cost, lb, ub, p0, SAMIN(), Optim.Options(iterations=10^4))
 end
 
-function fitVLF(data::VirusLoadData; ϵ=0.1)
+function fitVLF(data::VirusLoadData; c=0.15, niter = 10^3)
     # Best parameter
+    ϵ = -2/length(data.t)*log(c)
     fit1 = nothing
-    niter = 10^3
     pb1 = Progress(niter, 0.5, "Fitting the VLF to data ")
     for iter = 1:niter
         #      a₁,     a₂,     b₁,     b₂      α,      logVmax
@@ -80,8 +80,8 @@ function fitVLF(data::VirusLoadData; ϵ=0.1)
         catch y
             nothing
         end
-        if fit0 != nothing
-            if fit1 == nothing
+        if fit0 !== nothing
+            if fit1 === nothing
                 fit1 = fit0
             else
                 if sum(abs2, fit0.resid) < sum(abs2, fit1.resid)
