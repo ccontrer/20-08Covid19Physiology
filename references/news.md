@@ -8,6 +8,13 @@ Ordered by date (newest to oldest).
 
 ## 2021
 
+- July:
+  - 23rd: [Viral shedding for the delta variant is 1000 times higher](https://www.medpagetoday.com/special-reports/exclusives/93717). Medpage today (`variants`)
+
+- June:
+  - 29th: [What us the delta variant](https://www.medpagetoday.com/special-reports/exclusives/93351). Medpage today (`varinats`)
+  - 4th: [ACE inhibitors might be beneficial for COVID-19 patients](https://www.medpagetoday.com/infectiousdisease/covid19/86888). Medpage Today (`tests`) 
+
 - March:
   - 10th: [Austria suspends AstraZeneca vacine after a person was diagnosed wih multiple thrombosis](https://www.ema.europa.eu/en/news/covid-19-vaccine-astrazeneca-prac-preliminary-view-suggests-no-specific-issue-batch-used-austria). EM (`vaccine`) 
 
@@ -17,12 +24,13 @@ Ordered by date (newest to oldest).
 ## 2020
 
 - December:
-  - 21th: [New strain VUI-202012/01 originated in UK may spread more readly.](https://www.who.int/csr/don/21-december-2020-sars-cov2-variant-united-kingdom/en/) 
+  - 21th: [New strain VUI-202012/01 originated in UK may spread more readly.](https://www.who.int/csr/don/21-december-2020-sars-cov2-variant-united-kingdom/en/).
 
 - October:
   - 26th: [British study shows evidence of waning immunity to Covid-19](https://www.cnn.com/2020/10/26/health/covid-19-immunity-wanes-large-study-finds/index.html). CNN. (`inmunity`, `reinfection`)
   - 13th. [Dutch woman dies after catching Covid-19 twice, the first reported reinfection death](https://www.cnn.com/2020/10/13/europe/covid-19-dutch-woman-reinfection-death-intl/index.html). CNN. (`reinfection`)
   - 7th: [COVID-19 (coronavirus): Long-term effects](https://www.mayoclinic.org/diseases-conditions/coronavirus/in-depth/coronavirus-long-term-effects/art-20490351?utm_source=newsletter&utm_medium=email&utm_campaign=housecall&s=03). Mayo clinic. (`long-term effects`)
+  - 1st. [The Surgisphere scandal](https://www.the-scientist.com/features/the-surgisphere-scandal-what-went-wrong--67955) Medpage Today (`pandemic`) 
 
 - September:
   - 24th: [Falling COVID-19 viral loads may explain lower rates of ICU use, deaths](https://www.cidrap.umn.edu/news-perspective/2020/09/falling-covid-19-viral-loads-may-explain-lower-rates-icu-use-deaths). Univeristy of Manitoba. (`tests`, `viral load`)
