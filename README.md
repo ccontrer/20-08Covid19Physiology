@@ -44,16 +44,16 @@ A virus load curve is a time series of the amount of virus (measured in infectio
 
 ### Notebooks
 
-- [Virus load function: data fitting](./julia/02%20Fitting%20the%20virus%20load%20function.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/02%20Fitting%20the%20virus%20load%20function.ipynb)
-- [Viral kinetic ODE model: numerical solution](./julia/01%20Solving%20the%20virus%20target%20model.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/01%20Solving%20the%20virus%20target%20model.ipynb)
-- [Viral kinetic ODE model: data fitting](./julia/03%20Fitting%20the%20virus%20target%20model.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/03%20Fitting%20the%20virus%20target%20model.ipynb)
-- [Comparing the viral load function with the ODE model](./julia/04%20Comparing%20the%20virus%20load%20function%20with%20the%20virus-target%20model.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/04%20Comparing%20the%20virus%20load%20function%20with%20the%20virus-target%20model.ipynb)
+- [Virus load function: data fitting](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/02%20Fitting%20the%20virus%20load%20function.ipynb)
+- [Viral kinetic ODE model: numerical solution](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/01%20Solving%20the%20virus%20target%20model.ipynb)
+- [Viral kinetic ODE model: data fitting](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/03%20Fitting%20the%20virus%20target%20model.ipynb)
+- [Comparing the viral load function with the ODE model](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/04%20Comparing%20the%20virus%20load%20function%20with%20the%20virus-target%20model.ipynb)
 - Fitting models to data:
-  - [Influenza data](./julia/05%20Fitting%20models%20to%20influenza%20data.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/05%20Fitting%20models%20to%20influenza%20data.ipynb)
-  - [Human Influenza data](./julia/07a%20Fitting%20models%20to%20Influenza%20A%20data%20(Baccam%202008).ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/07a%20Fitting%20models%20to%20Influenza%20A%20data%20(Baccam%202008).ipynb)
-  - [Human rhinovirus data](./julia/07b%20Fitting%20models%20to%20Rhinovirus%20data%20(Kennedy%202014).ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/07b%20Fitting%20models%20to%20Rhinovirus%20data%20(Kennedy%202014).ipynb)
-  - [Macaque monkey SARS-Cov2 data](./julia/06%20Fitting%20models%20to%20macaque%20monkey%20SARS-Cov2%20data.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/06%20Fitting%20models%20to%20macaque%20monkey%20SARS-Cov2%20data.ipynb)
-  - [Human SARS-Cov2 data](./julia/07%20Fitting%20models%20to%20human%20SARS-Cov2%20data.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/06%20Fitting%20models%20to%20macaque%20monkey%20SARS-Cov2%20data.ipynb)
+  - [Influenza data](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/05%20Fitting%20models%20to%20influenza%20data.ipynb)
+  - [Human Influenza data](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/07a%20Fitting%20models%20to%20Influenza%20A%20data%20(Baccam%202008).ipynb)
+  - [Human rhinovirus data](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/07b%20Fitting%20models%20to%20Rhinovirus%20data%20(Kennedy%202014).ipynb)
+  - [Macaque monkey SARS-Cov2 data](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/06%20Fitting%20models%20to%20macaque%20monkey%20SARS-Cov2%20data.ipynb)
+  - [Human SARS-Cov2 data](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/julia/06%20Fitting%20models%20to%20macaque%20monkey%20SARS-Cov2%20data.ipynb)
 
 ---
 
@@ -61,7 +61,9 @@ A virus load curve is a time series of the amount of virus (measured in infectio
 
 The Government of Alberta [website](https://www.alberta.ca/stats/covid-19-alberta-statistics.htm) has highlight statistics and public data.
 
-[Data analysis](./python/03%20COVID-19%20Alberta.ipynb) [(nbpreview)](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/python/03%20COVID-19%20Alberta.ipynb)
+[Analysis of public data](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/python/03%20COVID-19%20Alberta.ipynb) (updated weekly)
+
+[Analysis of restricted data](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/python/03%20COVID-19%20Alberta%20restricted%20data.ipynb)
 
 ---
 
