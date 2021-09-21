@@ -63,7 +63,7 @@ The Government of Alberta [website](https://www.alberta.ca/stats/covid-19-albert
 
 [Analysis of public data](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/python/03%20COVID-19%20Alberta.ipynb) (updated weekly)
 
-[Analysis of restricted data](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/python/03%20COVID-19%20Alberta%20restricted%20data.ipynb)
+Restricted data: [analysis](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/python/03%20COVID-19%20Alberta%20restricted%20data.ipynb) | [prognosis](https://nbviewer.jupyter.org/github/ccontrer/20-08Covid19Physiology/blob/master/python/04%20COVID-19%20Prognosis%20(Alberta%20restricted).ipynb)
 
 ---
 
