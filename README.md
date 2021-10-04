@@ -36,7 +36,7 @@ This research focuses on within-host dynamics of the SARS-CoV-2. Why are people 
 
 A virus load curve is a time series of the amount of virus (measured in infections particles per mL) within a host.  The virus infects cells and replicatess as the inmune system fights the infection. The dynamics between the virus, healthy cells, infected cells, and the immune system can be described by a system of differential equations ([review of viral kinetic models](https://link.springer.com/article/10.1007%2Fs10928-014-9363-3)). Many COVID-19 researchers focus on the within-host dynamics of the virus and require a viral load input for their models. Here we propose a personalizable and practical model for the SARS-CoV-2 viral load that can be used as input for models requiring a viral load.
 
-- Hillen, T., Contreras, C., & Newby, J. M. (2021). Personalized Virus Load Curves of SARS-CoV-2 Infection. [Preprint](https://www.medrxiv.org/content/10.1101/2021.01.21.21250268v1).
+- Hillen, T., Contreras, C., & Newby, J. M. (2021). Personalized Virus Load Curves for Accute Viral Infections. *Viruses* **2021**, 13(9), 1815. [Paper](https://www.mdpi.com/1999-4915/13/9/1815) [Preprint](https://www.medrxiv.org/content/10.1101/2021.01.21.21250268v1).
 
 [List of acronyms and abbreviations](./references/acronyms.md)
 
