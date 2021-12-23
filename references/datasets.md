@@ -14,3 +14,11 @@
 - https://www.alberta.ca/stats/covid-19-alberta-statistics.htm : Alberta.ca Display of data in Alberta. Graphs contain age group, sex, comorbidities, and death information. The Data Export tab allows us to download all data containing date, location, gender, age, status and type (105535 entries). How to obtains the raw data including comorbidities?
 - https://www.cihi.ca/en/access-data-and-reports : Canadian Institute for Health Information. Access requested on Dec 28. Conformation of request recieved on Jan 5.
 - https://mdl.library.utoronto.ca/covid-19/data : huge hub of data & statistical resources.
+
+## Virus Load data
+
+- [Challenger et al. *MedRxiv* **2021**](https://www.medrxiv.org/content/10.1101/2021.05.01.21256182v2). List of 17 resources of virus load.
+
+- [Kisller et al. *MedRxiv* **2021**](https://www.medrxiv.org/content/10.1101/2021.02.16.21251535v2). 69 invdividuals. [Data](https://github.com/gradlab/CtTrajectories_AllVariants/blob/main/data/ct_dat_refined.csv)
+
+- [Neant et al. PNAS **2021**, 118 (8) e2017962118](https://www.pnas.org/content/118/8/e2017962118). 665 patients. [Data](https://www.pnas.org/highwire/filestream/973147/field_highwire_adjunct_files/3/pnas.2017962118.sd01.csv)
