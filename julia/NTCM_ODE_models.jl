@@ -1,12 +1,11 @@
 ### Normal Tissue Comlication Model ODE models
 ### v0.1
 
-struct NTCM_model_ODE
+struct NTCM_model
     id::String
     name::String
     prob::ODEProblem
-    u_labels::NamedTuple
-    u_cofactor_ix::Vector
+    vars::Dict
     pars::Dict
 end
 
@@ -31,45 +30,41 @@ function modelODE!(du, u, p, t)
     # Lung damage
     du[1] = dE = μ_E*E*(1.0 - E) - δ_E*E*V(t)/Vmax # Healthy lung epithelium
 end
-u_labels = [:E, ]
-u_names = ["Healthy lung cells"]
-u_ntuple = (; zip(u_labels, u_names)...)
 u0 = [
     1.0   #E: Healthy lung epithilium
 ]
+vars = Dict(:labels=>[:E, ],
+            :names=>["Healthy lung cells"],
+            :initconds=>u0,
+            :covars=>[1, ])
 tspan = (0.0, 40.0)
-pf_labels = [:a₁, :a₂, :b₁, :b₂, :α, :Vmin, :δ_E];
-pf = [
-    0.5     # a₁
-    4.0     # a₂
-    13.0    # b₁
-    19.0    # b₂
-    0.1     # α
-    1e-8    # Vmin
-    0.15    # δ_E (x3) changed from notes to accommodate true V/Vmax and produce the same graph
-    ]
-pf_ntuple = (; zip(pf_labels, pf)...)
-pp_labels = [];
-pp = [
-    ]
-pp_ntuple = (; zip(pp_labels, pp)...)
-pr_labels = [:Vmax, :μ_E];
-pr = [
-    3.7e3   # Vmax
-    0.01    # μ_E
-    ]
-pr_ntuple = (; zip(pr_labels, pr)...)
-pθ_labels = [:E, ];
-pθ = [
-    0.3     # E_θ
-    ]
-pθ_ntuple = (; zip(pθ_labels, pθ)...)
-pars = Dict(:fixed=>pf_ntuple, :prior=>pp_ntuple, :random=>pr_ntuple, :thresholds=>pθ_ntuple)
-prob = ODEProblem(modelODE!, u0, tspan, vcat(pf, pp, pr));
-# prob = ODEProblem(modelODE!, u0, tspan, vcat(collect(values(pars[:fixed])), collect(values(pars[:prior])), collect(values(pars[:rand]))));
+pf = Dict(:labels=>[:a₁, :a₂, :b₁, :b₂, :α, :Vmin, :δ_E],
+          :values=>[
+            0.5     # a₁
+            4.0     # a₂
+            13.0    # b₁
+            19.0    # b₂
+            0.1     # α
+            1e-8    # Vmin
+            0.15    # δ_E (x3) changed from notes to accommodate true V/Vmax and produce the same graph
+            ])
+pp = Dict(:labels=>[],
+          :values=>[
+            ])
+pr = Dict(:labels=>[:Vmax, :μ_E],
+          :values=>[
+            3.7e3   # Vmax
+            0.01    # μ_E
+            ])
+pθ = Dict(:labels=>[:E, ],
+          :values=>[
+            0.3     # E_θ
+            ])
+pars = Dict(:fixed=>pf, :prior=>pp, :random=>pr, :thresholds=>pθ)
+prob = ODEProblem(modelODE!, u0, tspan, vcat(pf[:values], pp[:values], pr[:values]));
 sol = solve(prob, Tsit5(), dtmax=1e-1)
 plot(sol)
-model_ODE_VLF001 = NTCM_model_ODE("VLF001", "VLF + Lung tissue", prob, u_ntuple, pars)
+model_VLF001 = NTCM_model("VLF001", "VLF + Lung tissue", prob, vars, pars)
 
 
 # ## VLF + Lung + Cytokine + Immune
