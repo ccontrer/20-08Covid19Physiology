@@ -47,7 +47,6 @@ model_ODE = model_ODE_VLF001
     K_groups = length(unique(data.group))
     
     # ODE parameters (default)
-    
     # priors
     #Vmax ~ Normal(3.7e3, 10.)
     # μ_E = rand(Normal(model_ODE.pars[:prior][1], 0.0001), K_groups)
@@ -98,11 +97,12 @@ end
 
 
 ## Simulation
-n_samples = 50
+n_samples = 100
 n_chains = 1
+sampler = NUTS()
 model = modelProb(df, model_ODE, [1, ])
-chns = sample(model, NUTS(), n_samples)
-# chns = sample(model, NUTS(), MCMCThreads(), n_samples, n_chains)
+chns = mapreduce(c -> sample(model, sampler, n_samples), chainscat, 1:n_chains)
+# chns = sample(model, sampler, MCMCThreads(), n_samples, n_chains)
 plot(chns)
 savefig(plot(chns), results_dir*"figure-chains-"*model_ODE.id)
 write(results_dir*"chains-"*model_ODE.id*".jls", chns)

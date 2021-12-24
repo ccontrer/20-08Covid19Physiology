@@ -6,6 +6,7 @@ struct NTCM_model_ODE
     name::String
     prob::ODEProblem
     u_labels::NamedTuple
+    u_cofactor_ix::Vector
     pars::Dict
 end
 
