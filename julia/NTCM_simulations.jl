@@ -131,7 +131,7 @@ end
 
 ## Simulation
 n_samples = 1000
-n_chains = 4
+n_chains = 2
 sampler = NUTS()
 model = modelProb(df, model_ODE)
 tstat = @timed chns = mapreduce(c -> sample(model, sampler, n_samples), chainscat, 1:n_chains)

@@ -9,6 +9,10 @@ struct NTCM_model
     pars::Dict
 end
 
+function parsDict2Array(pars::Dict)
+  vcat(pars[:fixed][:values], pars[:prior][:values], pars[:random][:values])
+end
+
 ## Virus load function
 function VLF(t::Float64, p::Vector)
     a₁, a₂, b₁, b₂, α, Vmax, Vmin = p
@@ -61,7 +65,7 @@ pθ = Dict(:labels=>[:E, ],
             0.3     # E_θ
             ])
 pars = Dict(:fixed=>pf, :prior=>pp, :random=>pr, :thresholds=>pθ)
-prob = ODEProblem(modelODE!, u0, tspan, vcat(pf[:values], pp[:values], pr[:values]));
+prob = ODEProblem(modelODE!, u0, tspan, parsDict2Array(pars));
 sol = solve(prob, Tsit5(), dtmax=1e-1)
 plot(sol)
 model_VLF001 = NTCM_model("VLF001", "VLF + Lung tissue", prob, vars, pars)
