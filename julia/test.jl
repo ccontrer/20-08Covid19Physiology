@@ -1,31 +1,49 @@
-using Plots, LaTeXStrings
-using DelimitedFiles
-using Revise
-using JLD2, FileIO
 
-cd("julia/")
-push!(LOAD_PATH, ".")
-using VirusLoadCurve
+include("RiskCov19.jl")
 
-tdata = [4.0/24.0, 1., 2., 3., 4., 5., 6., 7., 8., 9., 10., 11., 12.]
-RAWDATA = readdlm("../../data/Smith2018/Virus_Best10.txt", ' ', Float64, '\n')
+using DataFrames
+using OrdinaryDiffEq
+using Plots, StatsPlots
 
-k = 6
-ttdata = repeat(tdata, inner=1)
-tend = ttdata[end]
-vvdata = reshape(RAWDATA[k, :], 1, :)[:]
+import .RiskCov19
 
-data = VirusLoadCurve.VirusLoadData(ttdata, vvdata)
+# DATA
+data = RiskCov19.load_AHS_data([:Age], [:Num_comorbidities])
+data = RiskCov19.RiskCov19Data(data.df[1:100, :], 
+                               data.timecol, 
+                               data.deadcol, 
+                               data.lincovars, 
+                               data.odecovars)
+train, test = RiskCov19.data_partition(data, 0.7, shuffle=true)
+# display
+display(first(train.df, 6))
+display(describe(train.df))
+println("Dimensions: ", size(train.df))
 
-par0 = [0.70, 2.88, 6.00, 7.60, 0.20, 5.0]
-resultVLF = VirusLoadCurve.fitVLF(data; ϵ=0.1)
-summary(resultVLF)
-save("test.jld2", Dict("result" => resultVLF, "data" => data))
+# ODE Model
+model = RiskCov19.model001
+# display
+sol = solve(model.prob, Tsit5(), dtmax=1e-1)
+plot(sol, labels=model.vars.description[1], lw=2, ylims=(0., 1))
 
-resultVLF = load("test.jld2", "result")
+# Turing model
+chn = RiskCov19.train(train, model, n_samples=300, n_chains=2)
+# display
+display(chn)
+plot(chn)
+# save results
+savefig(plot(chn), joinpath("results", model.id*"-figure-chains.png"))
+write(joinpath("results", model.id*"-chains.jls"), chn)
+# predict
+pred = RiskCov19.predict(train, chn, train, model)
 
-plot(data)
-plot!(resultVLF, empirical=true, ylims=(-2, 9))
-ylims!((-2, 9))
-
-pt = VirusLoadCurve.Boxplots(resultVLF)
+# Turing model
+chn = RiskCov19.train(train, model, n_samples=300, n_chains=2)
+# display
+display(chn)
+plot(chn)
+# save results
+savefig(plot(chn), joinpath("results", model.id*"-figure-chains.png"))
+write(joinpath("results", model.id*"-chains.jls"), chn)
+# predict
+pred = RiskCov19.predict(train, chn, train, model)
